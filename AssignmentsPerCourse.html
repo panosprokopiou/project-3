@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    function validateName() {
+
+var name = document.getElementById('contact-name').value;
+
+if(name.length == 0) {
+
+  producePrompt('Name is required', 'name-error' , 'red')
+  return false;
+
+}
+
+if (!name.match(/^[A-Za-z]*\s{1}[A-Za-z]*$/)) {
+
+  producePrompt('First and last name, please.','name-error', 'red');
+  return false;
+
+}
+
+producePrompt('Valid', 'name-error', 'green');
+return true;
+
+}
+
+function validateForm() {
+  if (!validateName() || !validatePhone() || !validateEmail() || !validateMessage()) {
+    jsShow('submit-error');
+    producePrompt('Please fix errors to submit.', 'submit-error', 'red');
+    setTimeout(function(){jsHide('submit-error');}, 2000);
+      return false;
+  }
+  else {
+
+  }
+}
+
+function jsShow(id) {
+  document.getElementById(id).style.display = 'block';
+}
+
+function jsHide(id) {
+  document.getElementById(id).style.display = 'none';
+}
+
+
+
+
+function producePrompt(message, promptLocation, color) {
+
+  document.getElementById(promptLocation).innerHTML = message;
+  document.getElementById(promptLocation).style.color = color;
+
+
+}
+  </script>
+
+
+  <form>
+
+    <div class="form-group">
+      <label for="contact-name">Title of Assignment:</label>
+      <input type="text" class="form-control" id="contact-name" name="name"       placeholder="Enter title " onkeyup='validateName()'>
+      <span class='error-message' id='name-error'></span>
+    </div>
+    <br/>
+    
+    <div class="form-group">
+      <label for="contact-name">Description of Assignment:</label>
+      <input type="text" class="form-control" id="contact-name" name="name"       placeholder="Enter description" onkeyup='validateName()'>
+      <span class='error-message' id='name-error'></span>
+    </div>
+    
+    <div>
+      <p>SubDate Time:
+      <input type="date" ></p>
+    </div>
+    <div>
+      <p>Oral Mark:
+      <input type="number" ></p>
+    </div>
+    <div>
+      <p>Total Mark:
+      <input type="number" ></p>
+    </div>
+
+
+    <div class="form-group">
+      <label for="contact-name">Title of Course:</label>
+      <input type="text" class="form-control" id="contact-name" name="name"       placeholder="Enter title" onkeyup='validateName()'>
+      <span class='error-message' id='name-error'></span>
+    </div>
+    <br/>
+    <div class="form-group">
+      <label for="contact-name">Stream:</label>
+      <input type="text" class="form-control" id="contact-name" name="name"       placeholder="Enter stream" onkeyup='validateName()'>
+      <span class='error-message' id='name-error'></span>
+    </div>
+    <br/>
+    <div class="form-group">
+      <label for="contact-name">Type:</label>
+      <input type="text" class="form-control" id="contact-name" name="name"       placeholder="Enter type" onkeyup='validateName()'>
+      <span class='error-message' id='name-error'></span>
+    </div>
+  </form>   
+  <div>
+    <p>Start Date:
+    <input type="date" ></p>
+  </div>
+  <div>
+    <p>End Date:
+    <input type="date" ></p>
+  </div>
+  <div>
+    <button type="submit">submit</button>
+    <button type="reset">reset</button>
+  </div>
+  <br/>
+<div>
+  <a class="btn" href="index.html" >Bring me Back</a>
+</div>
+</body>
+</html>
